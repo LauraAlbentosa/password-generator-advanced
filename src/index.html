@@ -9,6 +9,47 @@
     <title>Vite Template</title>
   </head>
   <body>
+    <main class="main card">
+      <section class="card">
+        <div class="container">
+          <p class="text" id="show-password"></p>
+        </div>
+
+        <p class="text" id="password-length">Lenght: </p>
+
+        <div class="container">
+          <span class="text">4</span>
+          <input class="range" type="range" name="" id="range" min="4" max="32">
+          <span class="text">32</span>
+        </div>
+
+        <button class="container button" id="button">Generate Password</button>
+        
+      </section>
+
+     <section class="options">
+        <div class="container container--option">
+          <span class="text">Include Uppercase</span>
+          <input type="checkbox" id="toggle" class="toggle-checkbox">
+          <label for="toggle" class="toggle-label"></label>
+        </div>
+        <div class="container container--option">
+          <span class="text">Include Lowercase</span>
+          <input type="checkbox" id="toggle--1" class="toggle-checkbox">
+          <label for="toggle" class="toggle-label"></label>
+        </div>
+        <div class="container container--option">
+          <span class="text">Include Numbers</span>
+          <input type="checkbox" id="toggle--2" class="toggle-checkbox">
+          <label for="toggle" class="toggle-label"></label>
+        </div>
+        <div class="container container--option">
+          <span class="text">Include Simbols</span>
+          <input type="checkbox" id="toggle--3" class="toggle-checkbox">
+          <label for="toggle" class="toggle-label"></label>
+        </div>
+     </section> 
+    </main>
     <script type="module" src="./js/index.js"></script>
   </body>
 </html>

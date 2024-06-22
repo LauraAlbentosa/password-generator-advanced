@@ -1,0 +1,15 @@
+.container{
+    background-color: var(--color-divs);
+    padding: 10px;
+    height: 50px;
+    width: 400px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &--option{
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
