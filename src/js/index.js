@@ -6,7 +6,6 @@ const numbers = '0123456789';
 const characters = '!@#$%^&*()_+-={}[]:;<>,.?/';
 
 let finalStringCharacters = '';
-
 let finalPassword = '';
 
 const showPassword = document.getElementById('show-password');
@@ -23,8 +22,9 @@ const lowerCaseCheckbox = document.getElementById('toggle-2');
 
 const numbersCheckbox = document.getElementById('toggle-3');
 
+const charactersCheckbox = document.getElementById('toggle-4');
+
 buttonElement.disabled = true;
-range.disabled = true;
 
 const setPasswordLength = event => {
   length = event.target.value;
@@ -32,48 +32,50 @@ const setPasswordLength = event => {
   return length;
 };
 
-range.addEventListener('change', setPasswordLength);
-
-let indexs = [];
-
 const checkBoxs = () => {
-    finalStringCharacters =''
-  if (upperCaseCheckbox.checked) {
-    range.disabled = false;
-    buttonElement.disabled = false;
-    finalStringCharacters += lettersUpper;
-  } else if (lowerCaseCheckbox.checked) {
-    range.disabled = false;
-    buttonElement.disabled = false;
-    finalStringCharacters += letters;
-  } else if (numbersCheckbox.checked) {
-    range.disabled = false;
-    buttonElement.disabled = false;
-    finalStringCharacters += numbers;
-  } else {
-    range.disabled = true;
-    buttonElement.disabled = true;
+  finalStringCharacters = '';
 
+  if (upperCaseCheckbox.checked || lowerCaseCheckbox.checked || numbersCheckbox.checked || charactersCheckbox.checked) {
+    buttonElement.disabled = false;
+  } else {
+    buttonElement.disabled = true;
   }
-  console.log(finalStringCharacters)
-  return finalStringCharacters
+
+  if (upperCaseCheckbox.checked) {
+    finalStringCharacters += lettersUpper;
+  }
+
+  if (lowerCaseCheckbox.checked) {
+    finalStringCharacters += letters;
+  }
+
+  if (numbersCheckbox.checked) {
+    finalStringCharacters += numbers;
+  }
+
+  if (charactersCheckbox.checked) {
+    finalStringCharacters += characters;
+  }
+
+  //console.log(numbers)
+
+  return finalStringCharacters;
 };
 
 const generateIndex = () => {
   finalPassword = '';
-  indexs = [];
+  const lengthStringCharacters = finalStringCharacters.length;
   for (let i = 0; i < length; i++) {
-    let index = Math.floor(Math.random() * 90);
-    indexs.push(index);
+    let index = Math.floor(Math.random() * lengthStringCharacters);
+    finalPassword += finalStringCharacters.charAt(index);
   }
-  return indexs;
-};
-
-const show = () => {
+  console.log(lengthStringCharacters);
   showPassword.textContent = finalPassword;
 };
 
+range.addEventListener('change', setPasswordLength);
 upperCaseCheckbox.addEventListener('click', checkBoxs);
 lowerCaseCheckbox.addEventListener('click', checkBoxs);
 numbersCheckbox.addEventListener('click', checkBoxs);
-buttonElement.addEventListener('click', show);
+charactersCheckbox.addEventListener('click', checkBoxs);
+buttonElement.addEventListener('click', generateIndex);
