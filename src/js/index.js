@@ -1,76 +1,79 @@
 // El styles lo importamos aquí, ya se carga después al compilar todo
 import '../scss/styles.scss';
-const charactersUpper =' ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const lettersUpper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const letters = 'abcdefghijklmnopqrstuvwxyz';
+const numbers = '0123456789';
+const characters = '!@#$%^&*()_+-={}[]:;<>,.?/';
 
-let finalPassword = ''
+let finalStringCharacters = '';
 
-const showPassword = document.getElementById('show-password')
+let finalPassword = '';
 
-const passwordLength = document.getElementById('password-length')
+const showPassword = document.getElementById('show-password');
 
-const range = document.getElementById('range')
+const passwordLength = document.getElementById('password-length');
 
-const buttonElement = document.getElementById('button')
+const range = document.getElementById('range');
 
-const upperCaseCheckbox = document.getElementById('toggle')
+const buttonElement = document.getElementById('button');
 
-const lowerCaseCheckbox = document.getElementById('toggle--1')
+const upperCaseCheckbox = document.getElementById('toggle-1');
 
-const numbersCheckbox = document.getElementById('toggle--2')
+const lowerCaseCheckbox = document.getElementById('toggle-2');
 
-buttonElement.disabled = true
+const numbersCheckbox = document.getElementById('toggle-3');
 
-const setPasswordLength = (event) =>{
-    length = event.target.value
-    passwordLength.textContent = `Length: ${length}`
-    return length
-    
-}
+buttonElement.disabled = true;
+range.disabled = true;
 
-range.addEventListener('change', setPasswordLength)
+const setPasswordLength = event => {
+  length = event.target.value;
+  passwordLength.textContent = `Length: ${length}`;
+  return length;
+};
 
-let indexs = []
+range.addEventListener('change', setPasswordLength);
 
-const generateIndex = (number) =>{
-    
-    finalPassword = ''
-    indexs = []
-    
-    for (let i = 0; i<length; i++){
-        let index = Math.floor(Math.random()*number)
-        indexs.push(index)
-    }
-    return indexs
-    
-}
+let indexs = [];
 
-const checkBoxs = () =>{
-    if (upperCaseCheckbox.checked){
-        console.log('xd')
-        buttonElement.disabled =false
+const checkBoxs = () => {
+    finalStringCharacters =''
+  if (upperCaseCheckbox.checked) {
+    range.disabled = false;
+    buttonElement.disabled = false;
+    finalStringCharacters += lettersUpper;
+  } else if (lowerCaseCheckbox.checked) {
+    range.disabled = false;
+    buttonElement.disabled = false;
+    finalStringCharacters += letters;
+  } else if (numbersCheckbox.checked) {
+    range.disabled = false;
+    buttonElement.disabled = false;
+    finalStringCharacters += numbers;
+  } else {
+    range.disabled = true;
+    buttonElement.disabled = true;
 
-        generateIndex(27)
-        
-        for (const a of indexs){
-            console.log(a)
-            finalPassword += charactersUpper.charAt(a)
-        }
-        
-        
-    }else{
-        buttonElement.disabled = true
-    }
+  }
+  console.log(finalStringCharacters)
+  return finalStringCharacters
+};
 
-    
+const generateIndex = () => {
+  finalPassword = '';
+  indexs = [];
+  for (let i = 0; i < length; i++) {
+    let index = Math.floor(Math.random() * 90);
+    indexs.push(index);
+  }
+  return indexs;
+};
 
-}
+const show = () => {
+  showPassword.textContent = finalPassword;
+};
 
-
-const show = () =>{
-    showPassword.textContent = finalPassword
-}
-
-upperCaseCheckbox.addEventListener('click', checkBoxs)
-
-
-buttonElement.addEventListener('click', show)
+upperCaseCheckbox.addEventListener('click', checkBoxs);
+lowerCaseCheckbox.addEventListener('click', checkBoxs);
+numbersCheckbox.addEventListener('click', checkBoxs);
+buttonElement.addEventListener('click', show);
