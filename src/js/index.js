@@ -7,6 +7,7 @@ const characters = '!@#$%^&*()_+-={}[]:;<>,.?/';
 
 let finalStringCharacters = '';
 let finalPassword = '';
+let length = 4;
 
 const showPassword = document.getElementById('show-password');
 
@@ -25,6 +26,7 @@ const numbersCheckbox = document.getElementById('toggle-3');
 const charactersCheckbox = document.getElementById('toggle-4');
 
 buttonElement.disabled = true;
+
 
 const setPasswordLength = event => {
   length = event.target.value;

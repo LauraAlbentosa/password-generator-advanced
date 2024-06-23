@@ -1,3 +1,5 @@
+@use '../mixins/hover.scss' as *;
+
 .toggle-label {
   position: relative;
   display: flex;
@@ -7,6 +9,9 @@
   height: 20px;
   border-radius: 1rem;
   background-color: grey;
+  @include hover{
+    cursor: pointer;
+  }
 }
 
 .toggle-checkbox {
