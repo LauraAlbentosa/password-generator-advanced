@@ -27,11 +27,10 @@ const charactersCheckbox = document.getElementById('toggle-4');
 
 buttonElement.disabled = true;
 
-
 const setPasswordLength = event => {
   length = event.target.value;
   passwordLength.textContent = `Length: ${length}`;
-  return length;
+  //return length;
 };
 
 const checkBoxs = () => {
@@ -61,7 +60,7 @@ const checkBoxs = () => {
 
   //console.log(numbers)
 
-  return finalStringCharacters;
+  //return finalStringCharacters;
 };
 
 const generateIndex = () => {
@@ -81,3 +80,5 @@ lowerCaseCheckbox.addEventListener('click', checkBoxs);
 numbersCheckbox.addEventListener('click', checkBoxs);
 charactersCheckbox.addEventListener('click', checkBoxs);
 buttonElement.addEventListener('click', generateIndex);
+
+/*Dividir */

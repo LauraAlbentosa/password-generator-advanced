@@ -1,12 +1,12 @@
 @use '../mixins/hover.scss' as *;
 
-.button{
-   background-image: var(--color-button);
-    border: none;
-    margin-top: 40px;
-    transition: scale .5s ease;
-    @include hover{
-        cursor: pointer;
-        scale: 0.95; 
-    }
+.button {
+  background-image: var(--color-button);
+  border: none;
+  margin-top: 40px;
+  transition: scale 0.5s ease;
+  @include hover {
+    cursor: pointer;
+    scale: 0.95;
+  }
 }
